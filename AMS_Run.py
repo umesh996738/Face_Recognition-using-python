@@ -11,17 +11,16 @@ import time
 
 #####Window is our Main frame of system
 window = tk.Tk()
-window.title("FAMS-Face Recognition Based Attendance Management System")
+window.title(" Attendance System Using Face Recognition ")
 
 window.geometry('1280x720')
-window.configure(background='snow')
+window.configure(background='black')
 
 ####GUI for manually fill attendance
 
 def manually_fill():
     global sb
     sb = tk.Tk()
-    sb.iconbitmap('AMS.ico')
     sb.title("Enter subject name...")
     sb.geometry('580x320')
     sb.configure(background='snow')
@@ -33,7 +32,6 @@ def manually_fill():
         global ec
         ec = tk.Tk()
         ec.geometry('300x100')
-        ec.iconbitmap('AMS.ico')
         ec.title('Warning!!')
         ec.configure(background='snow')
         Label(ec, text='Please enter your subject name!!!', fg='red', bg='white', font=('times', 16, ' bold ')).pack()
@@ -256,7 +254,6 @@ def err_screen1():
     global sc2
     sc2 = tk.Tk()
     sc2.geometry('300x100')
-    sc2.iconbitmap('AMS.ico')
     sc2.title('Warning!!')
     sc2.configure(background='snow')
     Label(sc2,text='Please enter your subject name!!!',fg='red',bg='white',font=('times', 16, ' bold ')).pack()
@@ -273,7 +270,7 @@ def take_img():
     else:
         try:
             cam = cv2.VideoCapture(0)
-            detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+            detector = cv2.CascadeClassifier('frontalface_default.xml')
             Enrollment = txt.get()
             Name = txt2.get()
             sampleNum = 0
@@ -332,7 +329,7 @@ def subjectchoose():
                     Notifica.configure(text=e, bg="red", fg="black", width=33, font=('times', 15, 'bold'))
                     Notifica.place(x=20, y=250)
 
-                harcascadePath = "haarcascade_frontalface_default.xml"
+                harcascadePath = "frontalface_default.xml"
                 faceCascade = cv2.CascadeClassifier(harcascadePath)
                 df = pd.read_csv("StudentDetails\StudentDetails.csv")
                 cam = cv2.VideoCapture(0)
@@ -431,7 +428,7 @@ def subjectchoose():
                 root = tkinter.Tk()
                 root.title("Attendance of " + Subject)
                 root.configure(background='snow')
-                cs = 'C:/Users/kusha/PycharmProjects/Attendace managemnt system/' + fileName
+                cs = 'C:/Users/imeshpro/PycharmProjects/Attendace managemnt system/' + fileName
                 with open(cs, newline="") as file:
                     reader = csv.reader(file)
                     r = 0
@@ -459,7 +456,7 @@ def subjectchoose():
 
     def Attf():
         import subprocess
-        subprocess.Popen(r'explorer /select,"C:\Users\kusha\PycharmProjects\Attendace managemnt system\Attendance\-------Check atttendance-------"')
+        subprocess.Popen(r'explorer /select,"C:\Users\imeshpro\PycharmProjects\Attendace managemnt system\Attendance\-------Check atttendance-------"')
 
     attf = tk.Button(windo,  text="Check Sheets",command=Attf,fg="black"  ,bg="lawn green"  ,width=12  ,height=1 ,activebackground = "Red" ,font=('times', 14, ' bold '))
     attf.place(x=430, y=255)
@@ -486,8 +483,8 @@ def admin_panel():
         username = un_entr.get()
         password = pw_entr.get()
 
-        if username == 'kushal' :
-            if password == 'kushal14320':
+        if username == 'umesh' :
+            if password == 'umesh2021':
                 win.destroy()
                 import csv
                 import tkinter
@@ -495,7 +492,7 @@ def admin_panel():
                 root.title("Student Details")
                 root.configure(background='snow')
 
-                cs = 'C:/Users/kusha/PycharmProjects/Attendace managemnt system/StudentDetails/StudentDetails.csv'
+                cs = 'C:/Users/imeshpro/PycharmProjects/Attendace managemnt system/StudentDetails/StudentDetails.csv'
                 with open(cs, newline="") as file:
                     reader = csv.reader(file)
                     r = 0
@@ -564,7 +561,7 @@ def admin_panel():
 def trainimg():
     recognizer = cv2.face.LBPHFaceRecognizer_create()
     global detector
-    detector = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+    detector = cv2.CascadeClassifier("frontalface_default.xml")
     try:
         global faces,Id
         faces, Id = getImagesAndLabels("TrainingImage")
@@ -610,7 +607,7 @@ def getImagesAndLabels(path):
 
 window.grid_rowconfigure(0, weight=1)
 window.grid_columnconfigure(0, weight=1)
-window.iconbitmap('AMS.ico')
+#window.iconbitmap('AMS.ico')
 
 def on_closing():
     from tkinter import messagebox
