@@ -4,7 +4,7 @@ from PIL import Image
 #
 # recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer=cv2.face.createFisherFaceRecognizer_create()
-detector= cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+detector= cv2.CascadeClassifier("frontalface_default.xml")
 
 def getImagesAndLabels(path):
     #get the path of all the files in the folder
